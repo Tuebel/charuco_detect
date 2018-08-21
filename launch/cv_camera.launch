@@ -1,0 +1,8 @@
+<launch>
+  <!--Position of the camera in the world-->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="camera_tf" args="0 0 0 0 0 0 world camera"/>
+  <!--Camera-->
+  <node name="cv_camera_node" pkg="cv_camera" type="cv_camera_node">
+    <remap from="/cv_camera_node/" to="/camera/color"/>
+  </node>
+</launch>

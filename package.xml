@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>charuco_detect</name>
+  <version>0.0.1</version>
+  <description>    
+  A simple node to detect a charuco board.
+  The markers, corners and the pose of the board can be dected.
+  The pose of the board is published as tf2. Additionally an AR visualization
+  of the detected pose is published as image. 
+  </description>
+  <maintainer email="tim.uebelhoer@rwth-aachen.de">Tim Übelhör</maintainer>
+  <license>MIT</license>
+  <author email="tim.uebelhoer@rwth-aachen.de">Tim Übelhör</author>
+  <doc_depend>doxygen</doc_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+  <!-- Build and runtime -->
+  <depend>boost</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>tf2_ros</depend>
+  <depend>image_transport</depend>
+  <depend>cv_bridge</depend>
+  <!-- OpenCV based camera for launchfile -->
+  <exec_depend>cv_camera</exec_depend>
+  <exec_depend>rviz</exec_depend>
+</package>

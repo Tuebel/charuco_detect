@@ -1,0 +1,7 @@
+<launch>
+  <include file="$(find charuco_detect)/launch/cv_camera.launch"/>
+  <!--Detection -->
+  <node name="charuco_detect_node" pkg="charuco_detect" type="charuco_detect_node"/>
+  <!--Visualization-->
+  <node name="charuco_visualization" pkg="rviz" type="rviz"/>
+</launch>
