@@ -1,9 +1,7 @@
-// Charuco
-#include "charuco_utils/charuco_utils.h"
-// ROS
+#include <charuco_detect/charuco/board.hpp>
+#include <opencv2/imgcodecs.hpp>
 #include <ros/ros.h>
 #include <ros/package.h>
-// stl
 #include <string>
 
 int main(int argc, char **argv)
@@ -20,7 +18,10 @@ int main(int argc, char **argv)
         filename = ros::package::getPath("robo_guide") + "/config/DefaultBoard.png";
     }
     // Write the default board
-    auto board = charuco_utils::create_default_board();
-    charuco_utils::write_board(filename, board);
+    charuco_detect::Board board;
+    cv::Mat image;
+    board.board->draw(cv::Size(1000, 1400), image);
+    // Save
+    cv::imwrite(filename, image);
     return EXIT_SUCCESS;
 }
