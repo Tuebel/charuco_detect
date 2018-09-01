@@ -23,9 +23,11 @@ private:
   double marker_length;
   std::string camera_base_topic;
   std::string camera_frame_id;
+  std::string aruco_base_topic;
   // transmission helpers
   tf2_ros::TransformBroadcaster tf_broadcast;
   image_transport::ImageTransport image_transport;
   image_transport::CameraSubscriber camera_subscriber;
+  image_transport::CameraPublisher aruco_publisher;
 };
 } // namespace charuco_detect

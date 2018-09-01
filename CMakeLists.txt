@@ -66,9 +66,9 @@ target_link_libraries(charuco_detect PUBLIC
   aruco_detect)
 
 # executables
-add_executable(aruco_pose_node 
-    src/nodes/aruco_pose_node.cpp)
-target_link_libraries(aruco_pose_node
+add_executable(aruco_detect_node 
+    src/nodes/aruco_detect_node.cpp)
+target_link_libraries(aruco_detect_node
   ${catkin_LIBRARIES}
   charuco_conversion
   aruco_detect
@@ -84,9 +84,15 @@ target_link_libraries(charuco_detect_node
 
 add_executable(write_default_board
     src/nodes/write_default_board.cpp)
-target_link_libraries(write_default_board 
+target_link_libraries(write_default_board
   ${catkin_LIBRARIES}
   charuco_detect)
+
+add_executable(write_marker
+  src/nodes/write_marker.cpp)
+target_link_libraries(write_marker
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS})
 
 # Mark executables and/or libraries for installation
 install(TARGETS 

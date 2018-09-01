@@ -20,7 +20,7 @@ Fills in the pose of the markers
 \param marker_length the lenght of one marker in meters
 \return the poses of the detected markers
 */
-std::vector<Pose> aruco_pose(DetectedMarkers markers,
+std::vector<Pose> aruco_poses(DetectedMarkers markers,
                                       const cv::Mat &camera_matrix,
                                       const cv::Mat &dist_coeffs,
                                       float marker_length);

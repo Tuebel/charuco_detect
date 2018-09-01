@@ -7,7 +7,7 @@
 int main(int argc, char **argv)
 {
     // Initroialize ROS
-    ros::init(argc, argv, "pcl_model_pub", ros::init_options::AnonymousName);
+    ros::init(argc, argv, "write_default_board", ros::init_options::AnonymousName);
     // Private node handle for parameters
     ros::NodeHandle pnh("~");
     // Get the model filename
@@ -15,7 +15,7 @@ int main(int argc, char **argv)
     // Init default if no parameter is supplied
     if (!pnh.getParam("filename", filename))
     {
-        filename = ros::package::getPath("robo_guide") + "/config/DefaultBoard.png";
+        filename = ros::package::getPath("charuco_detect") + "/markers/DefaultBoard.png";
     }
     // Write the default board
     charuco_detect::Board board;

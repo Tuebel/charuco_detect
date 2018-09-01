@@ -28,7 +28,8 @@ Pose charuco_pose(const Board &board, const cv::Mat &camera_matrix,
   {
     cv::aruco::estimatePoseCharucoBoard(board.corners, board.ids, board.board,
                                         camera_matrix, dist_coeffs,
-                                        result.rotation, result.position);
+                                        result.rotation,
+                                        result.position);
   }
   return result;
 }
