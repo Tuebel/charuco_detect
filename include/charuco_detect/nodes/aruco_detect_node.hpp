@@ -22,7 +22,6 @@ private:
   // params
   double marker_length;
   std::string camera_base_topic;
-  std::string camera_frame_id;
   std::string aruco_base_topic;
   // transmission helpers
   tf2_ros::TransformBroadcaster tf_broadcast;

@@ -24,7 +24,6 @@ private:
   // Board to detect
   charuco_detect::Board board;
   // Configuration
-  std::string camera_frame;
   std::string charuco_frame;
 
 public:
@@ -32,7 +31,6 @@ public:
   {
     // Init parameters
     ros::NodeHandle pnh("~");
-    pnh.param<std::string>("camera_frame", camera_frame, "camera");
     pnh.param<std::string>("charuco_frame", charuco_frame, "charuco");
     // Subscriber and publisher for the camera
     cam_sub = image_transport.subscribeCamera(
@@ -41,7 +39,8 @@ public:
     cam_pub = image_transport.advertiseCamera("/charuco/image", 1);
   }
 
-  void camera_callback(const sensor_msgs::ImageConstPtr &image_msg, const sensor_msgs::CameraInfoConstPtr &info_msg)
+  void camera_callback(const sensor_msgs::ImageConstPtr &image_msg,
+                       const sensor_msgs::CameraInfoConstPtr &info_msg)
   {
     // Convert the ros image to opencv
     cv_bridge::CvImageConstPtr cv_ptr;
@@ -65,7 +64,7 @@ public:
     // Create the transform message
     geometry_msgs::TransformStamped tf_stamped;
     tf_stamped.header.stamp = image_msg->header.stamp;
-    tf_stamped.header.frame_id = camera_frame;
+    tf_stamped.header.frame_id = info_msg->header.frame_id;
     tf_stamped.child_frame_id = charuco_frame;
     tf_stamped.transform = charuco_detect::convert_to_tf2(estimated_pose);
     // Publish the pose

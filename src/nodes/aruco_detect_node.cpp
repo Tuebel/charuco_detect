@@ -16,7 +16,6 @@ ArucoPoseNode::ArucoPoseNode() : image_transport(node_handle)
   // parametrization
   pnh.param<std::string>("camera_base_topic", camera_base_topic,
                          "/camera/color/image_raw");
-  pnh.param<std::string>("camera_frame_id", camera_frame_id, "camera");
   pnh.param<std::string>("aruco_base_topic", aruco_base_topic,
                          "/aruco/color/image_raw");
   pnh.param<double>("marker_length", marker_length, 5e-2);
@@ -46,7 +45,7 @@ void ArucoPoseNode::process_camera(
     geometry_msgs::TransformStamped tf2_msg;
     tf2_msg.child_frame_id = "aruco_marker_" + std::to_string(markers.ids[i]);
     tf2_msg.transform = convert_to_tf2(marker_poses[i]);
-    tf2_msg.header.frame_id = camera_frame_id;
+    tf2_msg.header.frame_id = camera_info->header.frame_id;
     tf2_msg.header.stamp = image->header.stamp;
     tf2_poses.push_back(tf2_msg);
   }

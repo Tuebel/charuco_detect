@@ -3,6 +3,5 @@
   <!--Detection -->
   <node name="aruco_detect_node" pkg="charuco_detect" type="aruco_detect_node">
     <param name="camera_base_topic" value="/camera/color/image_raw"/>
-    <param name="camera_frame_id" value="camera_color_optical_frame"/>
   </node>
 </launch>
